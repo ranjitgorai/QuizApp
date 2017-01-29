@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    
+</head>
+<body style="background-color: lightblue;">
+<br>
+ 
+<div class="container-fluid">
+<center><h3><font color="green">Welcome to play Quize</font></h3></center>
+<br>
+  
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 well well-sm" >
+    
+  <form class="form-horizontal" role="form">
+	    <div class="form-group">
+	      <label class="control-label col-sm-2"><b>Name:</b></label>
+	      <div class="col-sm-9">
+	        <input type="text" class="form-control" id="username" required="required">
+	      </div>
+	    </div>
+
+	<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default" id="submit-btn">Submit</button>
+      </div>
+    </div>
+
+  </form>
+
+
+    </div>
+    <div class="col-sm-4"></div>
+</div><!--row-->
+
+</div><!--container-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+   $('#submit-btn').click(function(e){
+            e.preventDefault();
+              var name = $('#username').val();
+            
+              //console.log(data);
+          $.ajax({
+
+            url : '/quizeapp',
+            type: 'post',
+             data : {username : name},
+            success : function(result){          
+                  if(!result.error)
+                    {
+                       console.log(result);
+                       window.location.href = "/quizeapp/quizepage/"+result;
+
+                    }
+                    else{
+                      alert("error.");
+                    }
+                    //window.location.reload();
+            }
+          });   
+      });
+</script>
+
+
+</body>
+</html>

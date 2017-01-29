@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+    <pre> <b> Welcome <%=user%>  !!! </b> </pre>
+</head>
+<body>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+	    <div class="col-lg-8">
+<form action="/AnswersPost" method="post">
+
+ <input type="text"  style="display: none;" name="CurrentUser" value="<%=user%>" >
+
+
+		<div class="panel panel-default">
+		<% quest.forEach(function(ran, idx) { %>
+		<div class="panel-heading" id="question"><span><%= idx+1 %> .  </span><%= ran.questions %></div>
+		<div class="panel-body">
+		<div class="row">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-4">
+		<div class="radio">
+		<label>
+			 
+			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[0] %>"><%= ran.options[0] %>
+			
+		</label>
+		</div>
+		<div class="radio">
+		<label>
+			
+			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[1] %>"><%= ran.options[1] %>
+		</label>
+		</div>
+
+		</div>
+
+		<div class="col-lg-4">
+		<div class="radio">
+		<label>
+			
+			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[2] %>"><%= ran.options[2] %>
+		</label>
+		</div>
+		<div class="radio">
+		<label>
+			
+			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[3] %>"><%= ran.options[3] %>
+		</label>
+		</div>
+
+		</div>
+		
+		</div>
+
+		</div>
+		<div class="panel-heading text-center" style="height:50px;">
+
+		<!--<input class="btn btn-default pull-right" id="button" type="button" name="button" value="Next"/> -->
+		</div>
+		<% }) %>  
+		<center><input class="btn btn-default" id="submit-btn" type="submit" name="button" value="Submit"/> </center>
+		</div>
+	</div>
+</form>
+  </div> 
+ </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+	<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  	 $('#submit-btnff').click(function(e){
+            e.preventDefault();
+              
+          
+
+
+ console.log(86);
+
+          $.ajax({
+
+            url : '/quizeapp',
+            type: 'post',
+             data : {username : name},
+            success : function(result){          
+                  if(!result.error)
+                    {
+                      //alert("successfully submitted");
+                        //window.location.href = "/quizeapp/result";
+
+                    }
+                    else{
+                      alert("error.");
+                    }
+                    //window.location.reload();
+            }
+          });   
+      });
+
+  });
+   
+</script>
+
+
+</body>
+</html>
