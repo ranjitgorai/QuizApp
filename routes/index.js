@@ -14,7 +14,7 @@ router.post('/quizeapp',function(req,res){
      var num = req.body.username;
       //console.log(num);
      var data = {'name' : num};
-     console.log(data);
+     //console.log(data);
      var  user = new User(data);
      user.date_add = moment().format('LLL');
      user.score = "";
@@ -45,7 +45,7 @@ router.get('/quizeapp/quizepage/:id', function(req, res) {
  router.post('/AnswersPost' , function(req,res){ 
  	//console.log(req.body);
  	var scoreCntr = 0;
- 	var CurrentUser = req.body.CurrentUser
+ 	var CurrentUser = req.body.CurrentUser;
  	Question.find({}).sort({'_id':1}).exec(function(err,data){  
  		if(err) res.send(err);
  		// logic to see each result
