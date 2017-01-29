@@ -75,40 +75,6 @@
 	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
 	<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-
-  	 $('#submit-btnff').click(function(e){
-            e.preventDefault();
-              
-          
-
-
- console.log(86);
-
-          $.ajax({
-
-            url : '/quizeapp',
-            type: 'post',
-             data : {username : name},
-            success : function(result){          
-                  if(!result.error)
-                    {
-                      //alert("successfully submitted");
-                        //window.location.href = "/quizeapp/result";
-
-                    }
-                    else{
-                      alert("error.");
-                    }
-                    //window.location.reload();
-            }
-          });   
-      });
-
-  });
-   
-</script>
 
 
 </body>
