@@ -3,7 +3,8 @@ var router = express.Router();
 
 var Question = require('../models/question');
 var User = require('../models/user');
-var moment = require('moment')
+var moment = require('moment');
+
 
 router.get('/quizeapp', function(req, res, next) {  
   res.render('user', { title: 'Welcome to Play Quiz '});

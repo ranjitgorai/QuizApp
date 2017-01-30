@@ -3,79 +3,129 @@
   <title></title>
   <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
+ <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.countdownTimer.css" />
+
     <pre> <b> Welcome <%=user%>  !!! </b> </pre>
+    
 </head>
 <body style="background-color: lightblue;">
 <br>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-2"></div>
-	    <div class="col-lg-8">
-<form action="/AnswersPost" method="post">
-
- <input type="text"  style="display: none;" name="CurrentUser" value="<%=user%>" >
-
-
-		<div class="panel panel-default">
-		<% quest.forEach(function(ran, idx) { %>
-		<div class="panel-heading" id="question"><span><%= idx+1 %> .  </span><%= ran.questions %></div>
-		<div class="panel-body">
-		<div class="row">
-		<div class="col-lg-2"></div>
-		<div class="col-lg-4">
-		<div class="radio">
-		<label>
-			 
-			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[0] %>"><%= ran.options[0] %>
-			
-		</label>
-		</div>
-		<div class="radio">
-		<label>
-			
-			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[1] %>"><%= ran.options[1] %>
-		</label>
-		</div>
-
-		</div>
-
-		<div class="col-lg-4">
-		<div class="radio">
-		<label>
-			
-			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[2] %>"><%= ran.options[2] %>
-		</label>
-		</div>
-		<div class="radio">
-		<label>
-			
-			<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[3] %>"><%= ran.options[3] %>
-		</label>
-		</div>
-
-		</div>
-		
-		</div>
-
-		</div>
-		<div class="panel-heading text-center" style="height:50px;">
-
-		<!--<input class="btn btn-default pull-right" id="button" type="button" name="button" value="Next"/> -->
-		</div>
-		<% }) %>  
-		<center><input class="btn btn-default btn-success" id="submit-btn" type="submit" name="button" value="Submit"/> </center>
-		</div>
+	<div class="row">
+	<div id="countdowntimer">
+		<center><b>Time:</b>
+			<span id="ms_timer"></span>
+		</center>
 	</div>
-</form>
-  </div> 
- </div>
+	</div>
+      <div class="row">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-8">
+	<form action="/AnswersPost" method="post" id="formsamp">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-	<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+	<input type="text"  style="display: none;" name="CurrentUser" value="<%=user%>" >
 
 
+	<div class="panel panel-default">
+	<% quest.forEach(function(ran, idx) { %>
+	<div class="panel-heading" id="question"><span><%= idx+1 %> .  </span><%= ran.questions %></div>
+	<div class="panel-body">
+	<div class="row">
+	<div class="col-lg-2"></div>
+	<div class="col-lg-4">
+	<div class="radio">
+	<label>
+		 
+		<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[0] %>"><%= ran.options[0] %>
+		
+	</label>
+	</div>
+	<div class="radio">
+	<label>
+		
+		<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[1] %>"><%= ran.options[1] %>
+	</label>
+	</div>
+
+	</div>
+
+	<div class="col-lg-4">
+	<div class="radio">
+	<label>
+		
+		<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[2] %>"><%= ran.options[2] %>
+	</label>
+	</div>
+	<div class="radio">
+	<label>
+		
+		<input type="radio" name="optradio<%= idx %>" data-id="<%= ran._id %>" value="<%= ran.options[3] %>"><%= ran.options[3] %>
+	</label>
+	</div>
+
+	</div>
+
+	</div>
+
+	</div>
+	<div class="panel-heading text-center" style="height:50px;">
+
+	<!--<input class="btn btn-default pull-right" id="button" type="button" name="button" value="Next"/> -->
+	</div>
+	<% }) %>  
+	<center><input class="btn btn-default btn-success" id="submit" type="submit" name="button" value="Submit"/> </center>
+	</div>
+	</div>
+	</form>
+	</div> 
+</div>
+
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.countdown.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.countdownTimer.js"></script>
+	
+
+<script type="text/javascript">
+ /* var myVar = setInterval(function() {
+  myTimer()
+}, 300);
+var d = 0;
+
+function myTimer() {
+  document.getElementById("demo").innerHTML = d++;
+}*/
+$(function(){
+	$("#ms_timer").countdowntimer({
+                
+		        //minutes : 1,
+                seconds : 30,
+                size : "lg",
+                tickInterval: 1,
+               timeUp: timeisUp
+		     
+	});
+});
+  
+
+  function timeisUp() { 
+  	//console.log(111);
+   //$('#formsamp').submit(function(){return true;}); 
+   $('#submit').click();
+  }
+
+
+</script>
+
+<!--<script>  
+window.setInterval(function(){
+  console.log(115);
+}, 1000);
+</script>-->
 
 </body>
 </html>
