@@ -1,0 +1,5 @@
+{"_id":"1","questions":"The Bootstrap grid system is based on how many columns?","options":["9","6","3","12"],"correct":"12"}
+{"_id":"2","questions":" Which class adds zebra-stripes to a table? ","options":[".table-striped",".table-zebra",".table-bordered","even and .odd"],"correct":".table-striped"}
+{"_id":"3","questions":" Which class shapes an image to a circle? ","options":[".img-round",".img-thumbnail",".img-circle",".img-rounded"],"correct":".img-circle"}
+{"_id":"4","questions":"Which button class is used to create a large button? ","options":[".btn-xl",".btn-l",".btn-lg",".btn-large"],"correct":".btn-lg"}
+{"_id":"5","questions":"Which class is used to create a button group?","options":[".group-button",".button-group",".group-btn",".btn-group"],"correct":".btn-group"}
